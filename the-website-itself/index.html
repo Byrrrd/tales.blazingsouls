@@ -1,33 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Gallery</title>
+    <title>Blazing Souls - Platform</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Art Gallery</h1>
+        <h1>Blazing Souls</h1>
         <nav>
-            <a href="#gallery">Gallery</a>
-            <a href="#submit-art">Submit Art</a>
-            <a href="#login">Login</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="#community">Community</a>
+            <a href="#about">About</a>
+            <button onclick="showLoginModal()">Log In</button>
+            <button onclick="showSignupModal()">Sign Up</button>
+            <button id="logout-button" onclick="handleLogout()" style="display: none;">Log Out</button>
         </nav>
     </header>
     <main>
+        <!-- Gallery Section (Homepage) -->
         <section id="gallery">
             <h2>Gallery</h2>
-            <div id="art-container"></div>
-        </section>
-        <section id="submit-art
-            <h2>Submit Art</h2>
-            <form id="submit-art-form">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title">
-                <label for="artist">Artist</label>
-                <input type="text" id="artist" name="artist">
-                <label for="image">Image URL</label>
-                <input type="url" id="image" name="image">
-                <button type="submit">Submit</button>
+            <p>Explore the gallery and discover amazing creations.</p>
+            <form id="upload-form">
+                <label for="art-name">Artwork Name:</label>
+                <input type="text" id="art-name" name="art-name" placeholder="Enter artwork name" required>
+                <label for="file-upload">Submit Your Art:</label>
+                <input type="file" id="file-upload" name="file-upload" accept="image/*" required>
+                <button type="button" onclick="uploadFile()">Submit</button>
             </form>
+            <div id="art-gallery">
+                <!-- Placeholder for art submissions -->
+                <p>No art submissions yet. Be the first to share your work!</p>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community">
+            <h2>Community</h2>
+            <p>Join discussions and connect with other creators.</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <p>Learn more about the Blazing Souls platform.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Blazing Souls. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Log In</h2>
+            <form onsubmit="handleLogin(event)">
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" name="username" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" name="password" required>
+                <button type="submit">Log In</button>
+                <button type="button" onclick="closeModal('login-modal')">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Sign Up</h2>
+            <form onsubmit="handleSignup(event)">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+                <button type="submit">Sign Up</button>
+                <button type="button" onclick="closeModal('signup-modal')">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="login-signup.js"></script>
+</body>
+</html>
